@@ -7,6 +7,6 @@ RSpec.describe EventAttribute, type: :model do
     it { should validate_presence_of(:required) }
   end
   describe 'associations' do
-    # it { should have_many(:user_attribute_values) }
+    it { should have_many(:user_event_attribute_values) }
   end
 end
