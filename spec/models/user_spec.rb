@@ -7,5 +7,6 @@ RSpec.describe User, type: :model do
   end
   describe 'associations' do
     it { should have_many(:user_attribute_values) }
+    it { should have_many(:user_event_registrations) }
   end
 end
