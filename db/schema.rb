@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_135108) do
+ActiveRecord::Schema.define(version: 2020_05_26_135628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 2020_05_26_135108) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_event_attribute_values", force: :cascade do |t|
+    t.string "value"
+    t.bigint "user_event_registration_id", null: false
+    t.bigint "event_attribute_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_attribute_id"], name: "index_user_event_attribute_values_on_event_attribute_id"
+    t.index ["user_event_registration_id"], name: "index_user_event_attribute_values_on_user_event_registration_id"
+  end
+
   create_table "user_event_registrations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "event_id", null: false
@@ -68,6 +78,8 @@ ActiveRecord::Schema.define(version: 2020_05_26_135108) do
 
   add_foreign_key "user_attribute_values", "user_attributes"
   add_foreign_key "user_attribute_values", "users"
+  add_foreign_key "user_event_attribute_values", "event_attributes"
+  add_foreign_key "user_event_attribute_values", "user_event_registrations"
   add_foreign_key "user_event_registrations", "events"
   add_foreign_key "user_event_registrations", "users"
 end

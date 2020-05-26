@@ -8,6 +8,6 @@ RSpec.describe Event, type: :model do
     it { should validate_presence_of(:name) }
   end
   describe 'associations' do
-    it { should have_many(:user_event_registrations) }
+    it { should have_one(:user_event_registration) }
   end
 end

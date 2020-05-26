@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-  has_many :user_event_registrations
+  has_one :user_event_registration
   validates :name, presence: true
 end
