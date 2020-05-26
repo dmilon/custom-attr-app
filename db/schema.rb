@@ -10,10 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_122902) do
+ActiveRecord::Schema.define(version: 2020_05_26_135628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_attributes", force: :cascade do |t|
+    t.string "name"
+    t.boolean "required", default: false
+    t.string "data_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_attribute_values", force: :cascade do |t|
+    t.string "value"
+    t.bigint "user_id", null: false
+    t.bigint "user_attribute_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_attribute_id"], name: "index_user_attribute_values_on_user_attribute_id"
+    t.index ["user_id"], name: "index_user_attribute_values_on_user_id"
+  end
+
+  create_table "user_attributes", force: :cascade do |t|
+    t.string "name"
+    t.boolean "required", default: false
+    t.string "data_type"
+    t.boolean "profile"
+    t.boolean "signup"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_event_attribute_values", force: :cascade do |t|
+    t.string "value"
+    t.bigint "user_event_registration_id", null: false
+    t.bigint "event_attribute_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_attribute_id"], name: "index_user_event_attribute_values_on_event_attribute_id"
+    t.index ["user_event_registration_id"], name: "index_user_event_attribute_values_on_user_event_registration_id"
+  end
+
+  create_table "user_event_registrations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_user_event_registrations_on_event_id"
+    t.index ["user_id"], name: "index_user_event_registrations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -23,4 +76,10 @@ ActiveRecord::Schema.define(version: 2020_05_26_122902) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "user_attribute_values", "user_attributes"
+  add_foreign_key "user_attribute_values", "users"
+  add_foreign_key "user_event_attribute_values", "event_attributes"
+  add_foreign_key "user_event_attribute_values", "user_event_registrations"
+  add_foreign_key "user_event_registrations", "events"
+  add_foreign_key "user_event_registrations", "users"
 end
