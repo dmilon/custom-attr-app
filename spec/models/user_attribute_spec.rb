@@ -17,4 +17,8 @@ RSpec.describe UserAttribute, type: :model do
     #   )).to raise_error
     # end
   end
+  describe 'associations' do
+    it { should have_many(:user_attribute_values) }
+  end
 end
+
