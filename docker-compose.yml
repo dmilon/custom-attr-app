@@ -25,7 +25,6 @@ services:
     environment:
       - NODE_ENV=development
       - RAILS_ENV=${RAILS_ENV:-development}
-      - REDIS_URL=redis://redis:6379/
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432
       - BOOTSNAP_CACHE_DIR=/bundle/bootsnap
       - WEB_CONCURRENCY=1
@@ -45,14 +44,6 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
-      - redis
-
-  sidekiq:
-    <<: *app
-    command: bundle exec sidekiq -C config/sidekiq.yml
-    depends_on:
-      - postgres
-      - redis
 
   postgres:
     image: postgres:11.1
@@ -64,13 +55,6 @@ services:
       - PSQL_HISTFILE=/root/log/.psql_history
     ports:
       - 5432
-
-  redis:
-    image: redis:4.0.14-alpine
-    volumes:
-      - redis:/data
-    ports:
-      - 6379
 
 volumes:
   postgres:
