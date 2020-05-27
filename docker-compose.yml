@@ -24,7 +24,7 @@ services:
       - .psqlrc:/root/.psqlrc:ro
     environment:
       - NODE_ENV=development
-      - RAILS_ENV=${RAILS_ENV:-development RAILS_ENV:-test}
+      - RAILS_ENV=${RAILS_ENV:-development}
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432
       - BOOTSNAP_CACHE_DIR=/bundle/bootsnap
       - WEB_CONCURRENCY=1
