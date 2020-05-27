@@ -14,7 +14,7 @@ This is an app created in the context of [the Hivebrite Backend technical test](
 
 * I tried to find a way to display examples values in the seed, to have a glimpse of the way a form would be implemented. Only User profile form and User sign up form is displayed (``rails db:seed``). This logic may be used to create a Service or a helper that would reach all the necessary tables associations in order to simplify the forms set up in the view.
 
-* When an admin create a user_attribute, I think a sort of validation or maybe a method sould check that at least one of the ``:profile`` or ``:signup`` attribute is set to ``true``. Otherwise, the attribute created would not appear either in the profile form nor the signup form.
+* When an admin create a user_attribute, I think a sort of validation or maybe a method should check that at least one of the ``:profile`` or ``:signup`` attribute is set to ``true``. Otherwise, the attribute created would not appear either in the profile form nor the signup form.
 
 
 ## Database Schema
