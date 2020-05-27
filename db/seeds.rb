@@ -6,8 +6,7 @@ User.destroy_all
 
 puts "seeding"
 martin = User.create!(email: "martin@mail.com", password: "secret", admin: false)
-jeane = User.create!(email: "jeane@mail.com", password: "secret", admin: true)
-# User.admins.include?(jeane)
+
 donor = UserAttribute.create!(
   name: "donor",
   data_type: "boolean",
@@ -44,26 +43,29 @@ UserAttributeValue.create!(value: "1212 1212 1212 1212", user_id: martin.id, use
 
 def display_values
   User.all.each do |user|
-    p "User : #{user.email} has the following profile : "
-    p ">   "
+    puts "    "
+    puts "User : #{user.email} has the following profile : "
 
     UserAttribute.profile.each do |user_attribute|
       user_attribute.user_attribute_values.each do |user_attribute_value|
         if user.id == user_attribute_value.user_id
-          p "#{user_attribute.name} : #{user_attribute_value.value}"
+          puts "#{user_attribute.name} : #{user_attribute_value.value}"
         end
       end
     end
 
-    p "... and the following signup"
+    puts "    "
+    puts "... and the following signup : "
 
     UserAttribute.signup.each do |user_attribute|
       user_attribute.user_attribute_values.each do |user_attribute_value|
         if user.id == user_attribute_value.user_id
-          p "#{user_attribute.name} : #{user_attribute_value.value}"
+          puts "#{user_attribute.name} : #{user_attribute_value.value}"
         end
       end
     end
+
+    puts "    "
   end
 end
 

@@ -13,16 +13,8 @@ class EventAttributePolicy < ApplicationPolicy
     admin?
   end
 
-  def new?
-    create?
-  end
-
   def create?
     admin?
-  end
-
-  def edit?
-    update?
   end
 
   def update?
