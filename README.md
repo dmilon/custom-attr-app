@@ -1,11 +1,15 @@
 # README
 
-This is an app created in the context of [the Hivebrite Backend technical test](https://github.com/Hivebrite/hivebrite_backend_test).
-
-* This rails new was launched with the -J -M -T tags in order to simplify the app (no views = no JS ; no mailers involded in user stories ; I used Rspec to test my app, and not the rails Minitest).
+This is an app created in the context of this [technical test](https://github.com/Hivebrite/hivebrite_backend_test).
 
 * Docker is set up using docker-compose.yml and DIP. Deeply inspired by [Evil Martians](https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development).
--> Pull my image with ``docker pull svilder/custom-attr-app:1.0``.
+
+* To launch my app, here are the steps :
+-> Clone my repo : ``git clone https://github.com/svilder/custom-attr-app.git``
+-> Install [the gem dip](https://github.com/bibendi/dip) ``gem install dip``.
+-> Type ``dip provision`` in your terminal to launch the set up in the container.
+
+* This rails new was launched with the -J -M -T tags in order to simplify the app (no views = no JS ; no mailers involded in user stories ; I used Rspec to test my app, and not the rails Minitest).
 
 * I created models and table associations according to the DB schema (see this image below) I deducted from the user stories described. I included basic validations and some scopes.
 

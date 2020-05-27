@@ -86,5 +86,5 @@ provision:
   - rm -rf Gemfile.lock
   - dip bundle install
   - dip up -d
-  - dip DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:drop db:create db:schema:load
+  - dip DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:drop db:create db:schema:load db:seed
   - dip rspec
