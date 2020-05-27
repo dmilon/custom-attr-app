@@ -11,7 +11,7 @@ environment:
 compose:
   files:
     - docker-compose.yml
-  project_name: ok
+  project_name: ccustom-attr-app
 
 interaction:
   bash:
