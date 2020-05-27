@@ -86,3 +86,5 @@ provision:
   - rm -rf Gemfile.lock
   - dip bundle install
   - dip up -d
+  - dip rails db:prepare
+  - dip bundle exec rspec
