@@ -6,6 +6,8 @@ User.destroy_all
 
 puts "seeding"
 martin = User.create!(email: "martin@mail.com", password: "secret", admin: false)
+jeane = User.create!(email: "jeane@mail.com", password: "secret", admin: true)
+# User.admins.include?(jeane)
 donor = UserAttribute.create!(
   name: "donor",
   data_type: "boolean",
