@@ -37,9 +37,9 @@ ENV LANG=C.UTF-8 \
   BUNDLE_JOBS=4 \
   BUNDLE_RETRY=3
 
-ENV PATH /custom-attr-app/bin:$PATH
+ENV PATH /app/bin:$PATH
 
-WORKDIR /custom-attr-app
+WORKDIR /app
 
 RUN gem update --system && \
     gem install bundler:$BUNDLER_VERSION
