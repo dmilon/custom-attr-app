@@ -4,6 +4,8 @@ This is an app created in the context of [the Hivebrite Backend technical test](
 
 * This rails new was launched with the -J -M -T tags in order to simplify the app (no views = no JS ; no mailers involded in user stories ; I used Rspec to test my app, and not the rails Minitest).
 
+* Docker is set up using docker-compose.yml and DIP. Deeply inspired by [Evil Martians](https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development).
+
 * I created models and table associations according to the DB schema (see this image below) I deducted from the user stories described. I included basic validations and some scopes.
 
 * Associations and validations are tested with Rspec and Shoulda-Matchers gems (``bundle exec rspec``).

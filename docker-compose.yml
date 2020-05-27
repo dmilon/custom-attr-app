@@ -1,7 +1,5 @@
 version: "3.4"
 
-# General config for runner, rails, sidekiq, webpacker
-# Magic from https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development
 services:
   app: &app
     build:
@@ -12,7 +10,7 @@ services:
         PG_MAJOR: "11"
         NODE_MAJOR: "11"
         BUNDLER_VERSION: "2.1.4"
-    image: ok:dev
+    image: custom-attr-app:1.0
     tmpfs:
       - /tmp
     stdin_open: true
