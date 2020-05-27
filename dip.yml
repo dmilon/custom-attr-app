@@ -81,10 +81,10 @@ interaction:
 
 provision:
   - docker-compose down --volumes
-  - docker-compose up -d postgres redis
+  - docker-compose up -d postgres
   - docker-compose up -d --build app
   - rm -rf Gemfile.lock
   - dip bundle install
   - dip up -d
-  - dip rails db:prepare
-  - dip bundle exec rspec
+  - dip DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:drop db:create db:schema:load
+  - dip rspec
